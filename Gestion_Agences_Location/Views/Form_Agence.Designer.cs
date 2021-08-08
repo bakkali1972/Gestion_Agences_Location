@@ -1,6 +1,6 @@
 ﻿namespace Gestion_Agences_Location.Views
 {
-    partial class Agence
+    partial class Form_Agence
     {
         /// <summary>
         /// Required designer variable.
@@ -45,6 +45,10 @@
             this.BtnRechercher = new System.Windows.Forms.Button();
             this.btnAjoutter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.CmbVille = new System.Windows.Forms.ComboBox();
+            this.CmbResponsable = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +99,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CmbResponsable);
+            this.groupBox1.Controls.Add(this.CmbVille);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TxtNom_Agence);
@@ -103,7 +111,7 @@
             this.groupBox1.Controls.Add(this.TxtTelephone_Agence);
             this.groupBox1.Location = new System.Drawing.Point(6, 106);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(559, 207);
+            this.groupBox1.Size = new System.Drawing.Size(559, 296);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             // 
@@ -231,6 +239,42 @@
             this.label2.Text = "AGENCE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Gainsboro;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 192);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(177, 30);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Ville";
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Gainsboro;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(14, 248);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(177, 30);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Responsable";
+            // 
+            // CmbVille
+            // 
+            this.CmbVille.FormattingEnabled = true;
+            this.CmbVille.Location = new System.Drawing.Point(207, 197);
+            this.CmbVille.Name = "CmbVille";
+            this.CmbVille.Size = new System.Drawing.Size(330, 24);
+            this.CmbVille.TabIndex = 36;
+            // 
+            // CmbResponsable
+            // 
+            this.CmbResponsable.FormattingEnabled = true;
+            this.CmbResponsable.Location = new System.Drawing.Point(207, 248);
+            this.CmbResponsable.Name = "CmbResponsable";
+            this.CmbResponsable.Size = new System.Drawing.Size(330, 24);
+            this.CmbResponsable.TabIndex = 37;
+            // 
             // Agence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,5 +318,9 @@
         private System.Windows.Forms.Button BtnRechercher;
         private System.Windows.Forms.Button btnAjoutter;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox CmbResponsable;
+        private System.Windows.Forms.ComboBox CmbVille;
     }
 }

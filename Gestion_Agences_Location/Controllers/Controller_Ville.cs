@@ -44,6 +44,8 @@ namespace Gestion_Agences_Location.Controllers
         }
 
 
+        
+
         public void Modifier(Ville ville)
         {
           Ville _ville = new Ville();
@@ -69,6 +71,23 @@ namespace Gestion_Agences_Location.Controllers
                     _context.Villes.Remove(_ville);
                 }
             }
+        }
+
+
+        public bool Ajoutter(Ville ville)
+        {
+            bool existe = false;
+            using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
+            {
+                Ville v = _context.Villes.FirstOrDefault(e => e.NOM == ville.NOM);
+                if (v == null)
+                {
+                    existe = true;
+                    _context.Villes.Add(ville);
+                    _context.SaveChanges();
+                }
+            }
+            return existe;
         }
 
     }
