@@ -1,0 +1,13 @@
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\bin\Debug\Gestion_Agences_Location.exe.config
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\bin\Debug\Gestion_Agences_Location.exe
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\bin\Debug\Gestion_Agences_Location.pdb
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\bin\Debug\EntityFramework.dll
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\bin\Debug\EntityFramework.xml
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.csprojResolveAssemblyReference.cache
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.Properties.Resources.resources
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.Views.Agence.resources
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.csproj.GenerateResource.Cache
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.exe
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.pdb

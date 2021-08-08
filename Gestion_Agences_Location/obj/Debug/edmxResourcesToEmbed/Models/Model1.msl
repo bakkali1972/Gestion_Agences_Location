@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Gestion_Agence_LocationModelStoreContainer" CdmEntityContainer="Gestion_Agence_LocationEntities">
+    <EntitySetMapping Name="Agences">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.Agence">
+        <MappingFragment StoreEntitySet="Agence">
+          <ScalarProperty Name="IDAGENCE" ColumnName="IDAGENCE" />
+          <ScalarProperty Name="NOM" ColumnName="NOM" />
+          <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+          <ScalarProperty Name="TELE" ColumnName="TELE" />
+          <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTs">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.CLIENT">
+        <MappingFragment StoreEntitySet="CLIENT">
+          <ScalarProperty Name="CNIE" ColumnName="CNIE" />
+          <ScalarProperty Name="NOM_PRENOM" ColumnName="NOM_PRENOM" />
+          <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+          <ScalarProperty Name="TELE" ColumnName="TELE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTRATs">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.CONTRAT">
+        <MappingFragment StoreEntitySet="CONTRAT">
+          <ScalarProperty Name="IDCONTRAT" ColumnName="IDCONTRAT" />
+          <ScalarProperty Name="NUMERO_CONTRAT" ColumnName="NUMERO_CONTRAT" />
+          <ScalarProperty Name="DATEDEBUT" ColumnName="DATEDEBUT" />
+          <ScalarProperty Name="DUREE" ColumnName="DUREE" />
+          <ScalarProperty Name="IDAGENCE" ColumnName="IDAGENCE" />
+          <ScalarProperty Name="IDLOCAUX" ColumnName="IDLOCAUX" />
+          <ScalarProperty Name="CNIECLIENT" ColumnName="CNIECLIENT" />
+          <ScalarProperty Name="PRIX" ColumnName="PRIX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOCAUXes">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.LOCAUX">
+        <MappingFragment StoreEntitySet="LOCAUX">
+          <ScalarProperty Name="IDLOCAUX" ColumnName="IDLOCAUX" />
+          <ScalarProperty Name="NOM" ColumnName="NOM" />
+          <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+          <ScalarProperty Name="IDTYPE" ColumnName="IDTYPE" />
+          <ScalarProperty Name="SUPERFICIER" ColumnName="SUPERFICIER" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="PRIX" ColumnName="PRIX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Responsables">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.Responsable">
+        <MappingFragment StoreEntitySet="Responsable">
+          <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+          <ScalarProperty Name="NOM_PRENOM" ColumnName="NOM_PRENOM" />
+          <ScalarProperty Name="TELE" ColumnName="TELE" />
+          <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRAVEAUX">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.TRAVEAU">
+        <MappingFragment StoreEntitySet="TRAVEAUX">
+          <ScalarProperty Name="IDTRAVEAUX" ColumnName="IDTRAVEAUX" />
+          <ScalarProperty Name="DATE_TRAVEAUX" ColumnName="DATE_TRAVEAUX" />
+          <ScalarProperty Name="IDLOCAUX" ColumnName="IDLOCAUX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TYPEs">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.TYPE">
+        <MappingFragment StoreEntitySet="TYPE">
+          <ScalarProperty Name="IDTYPE" ColumnName="IDTYPE" />
+          <ScalarProperty Name="NOM" ColumnName="NOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Villes">
+      <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.Ville">
+        <MappingFragment StoreEntitySet="Ville">
+          <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+          <ScalarProperty Name="NOM" ColumnName="NOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

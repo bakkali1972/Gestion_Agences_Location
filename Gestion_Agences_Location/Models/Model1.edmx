@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Gestion_Agence_LocationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agence">
+          <Key>
+            <PropertyRef Name="IDAGENCE" />
+          </Key>
+          <Property Name="IDAGENCE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADRESSE" Type="varchar" MaxLength="50" />
+          <Property Name="TELE" Type="varchar" MaxLength="50" />
+          <Property Name="IDVILLE" Type="int" Nullable="false" />
+          <Property Name="IDRESPONSABLE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="CNIE" />
+          </Key>
+          <Property Name="CNIE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOM_PRENOM" Type="varchar" MaxLength="50" />
+          <Property Name="ADRESSE" Type="varchar" MaxLength="50" />
+          <Property Name="TELE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CONTRAT">
+          <Key>
+            <PropertyRef Name="IDCONTRAT" />
+          </Key>
+          <Property Name="IDCONTRAT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMERO_CONTRAT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATEDEBUT" Type="date" Nullable="false" />
+          <Property Name="DUREE" Type="int" Nullable="false" />
+          <Property Name="IDAGENCE" Type="int" Nullable="false" />
+          <Property Name="IDLOCAUX" Type="int" Nullable="false" />
+          <Property Name="CNIECLIENT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRIX" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOCAUX">
+          <Key>
+            <PropertyRef Name="IDLOCAUX" />
+          </Key>
+          <Property Name="IDLOCAUX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADRESSE" Type="varchar" MaxLength="50" />
+          <Property Name="IDTYPE" Type="int" Nullable="false" />
+          <Property Name="SUPERFICIER" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="50" />
+          <Property Name="PRIX" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Responsable">
+          <Key>
+            <PropertyRef Name="IDRESPONSABLE" />
+          </Key>
+          <Property Name="IDRESPONSABLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_PRENOM" Type="varchar" MaxLength="50" />
+          <Property Name="TELE" Type="varchar" MaxLength="50" />
+          <Property Name="IDVILLE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TRAVEAUX">
+          <Key>
+            <PropertyRef Name="IDTRAVEAUX" />
+          </Key>
+          <Property Name="IDTRAVEAUX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATE_TRAVEAUX" Type="date" Nullable="false" />
+          <Property Name="IDLOCAUX" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TYPE">
+          <Key>
+            <PropertyRef Name="IDTYPE" />
+          </Key>
+          <Property Name="IDTYPE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="IDVILLE" />
+          </Key>
+          <Property Name="IDVILLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Agence_Responsable">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Agence" Type="Self.Agence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="IDRESPONSABLE" />
+            </Principal>
+            <Dependent Role="Agence">
+              <PropertyRef Name="IDRESPONSABLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agence_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Agence" Type="Self.Agence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="Agence">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRAT_Agence">
+          <End Role="Agence" Type="Self.Agence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agence">
+              <PropertyRef Name="IDAGENCE" />
+            </Principal>
+            <Dependent Role="CONTRAT">
+              <PropertyRef Name="IDAGENCE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRAT_CLIEN">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="CNIE" />
+            </Principal>
+            <Dependent Role="CONTRAT">
+              <PropertyRef Name="CNIECLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRAT_LOCAUX">
+          <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCAUX">
+              <PropertyRef Name="IDLOCAUX" />
+            </Principal>
+            <Dependent Role="CONTRAT">
+              <PropertyRef Name="IDLOCAUX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCAUX_TYPE">
+          <End Role="TYPE" Type="Self.TYPE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE">
+              <PropertyRef Name="IDTYPE" />
+            </Principal>
+            <Dependent Role="LOCAUX">
+              <PropertyRef Name="IDTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responsable_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAVEAUX_LOCAUX">
+          <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TRAVEAUX" Type="Self.TRAVEAUX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCAUX">
+              <PropertyRef Name="IDLOCAUX" />
+            </Principal>
+            <Dependent Role="TRAVEAUX">
+              <PropertyRef Name="IDLOCAUX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Gestion_Agence_LocationModelStoreContainer">
+          <EntitySet Name="Agence" EntityType="Self.Agence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTRAT" EntityType="Self.CONTRAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCAUX" EntityType="Self.LOCAUX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Responsable" EntityType="Self.Responsable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRAVEAUX" EntityType="Self.TRAVEAUX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPE" EntityType="Self.TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Agence_Responsable" Association="Self.FK_Agence_Responsable">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="Agence" EntitySet="Agence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agence_Ville" Association="Self.FK_Agence_Ville">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Agence" EntitySet="Agence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRAT_Agence" Association="Self.FK_CONTRAT_Agence">
+            <End Role="Agence" EntitySet="Agence" />
+            <End Role="CONTRAT" EntitySet="CONTRAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRAT_CLIEN" Association="Self.FK_CONTRAT_CLIEN">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="CONTRAT" EntitySet="CONTRAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRAT_LOCAUX" Association="Self.FK_CONTRAT_LOCAUX">
+            <End Role="LOCAUX" EntitySet="LOCAUX" />
+            <End Role="CONTRAT" EntitySet="CONTRAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCAUX_TYPE" Association="Self.FK_LOCAUX_TYPE">
+            <End Role="TYPE" EntitySet="TYPE" />
+            <End Role="LOCAUX" EntitySet="LOCAUX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responsable_Ville" Association="Self.FK_Responsable_Ville">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Responsable" EntitySet="Responsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAVEAUX_LOCAUX" Association="Self.FK_TRAVEAUX_LOCAUX">
+            <End Role="LOCAUX" EntitySet="LOCAUX" />
+            <End Role="TRAVEAUX" EntitySet="TRAVEAUX" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Gestion_Agence_LocationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agence">
+          <Key>
+            <PropertyRef Name="IDAGENCE" />
+          </Key>
+          <Property Name="IDAGENCE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADRESSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDVILLE" Type="Int32" Nullable="false" />
+          <Property Name="IDRESPONSABLE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK_Agence_Responsable" FromRole="Agence" ToRole="Responsable" />
+          <NavigationProperty Name="Ville" Relationship="Self.FK_Agence_Ville" FromRole="Agence" ToRole="Ville" />
+          <NavigationProperty Name="CONTRATs" Relationship="Self.FK_CONTRAT_Agence" FromRole="Agence" ToRole="CONTRAT" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="CNIE" />
+          </Key>
+          <Property Name="CNIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOM_PRENOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADRESSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CONTRATs" Relationship="Self.FK_CONTRAT_CLIEN" FromRole="CLIENT" ToRole="CONTRAT" />
+        </EntityType>
+        <EntityType Name="CONTRAT">
+          <Key>
+            <PropertyRef Name="IDCONTRAT" />
+          </Key>
+          <Property Name="IDCONTRAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMERO_CONTRAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATEDEBUT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DUREE" Type="Int32" Nullable="false" />
+          <Property Name="IDAGENCE" Type="Int32" Nullable="false" />
+          <Property Name="IDLOCAUX" Type="Int32" Nullable="false" />
+          <Property Name="CNIECLIENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRIX" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Agence" Relationship="Self.FK_CONTRAT_Agence" FromRole="CONTRAT" ToRole="Agence" />
+          <NavigationProperty Name="CLIENT" Relationship="Self.FK_CONTRAT_CLIEN" FromRole="CONTRAT" ToRole="CLIENT" />
+          <NavigationProperty Name="LOCAUX" Relationship="Self.FK_CONTRAT_LOCAUX" FromRole="CONTRAT" ToRole="LOCAUX" />
+        </EntityType>
+        <EntityType Name="LOCAUX">
+          <Key>
+            <PropertyRef Name="IDLOCAUX" />
+          </Key>
+          <Property Name="IDLOCAUX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADRESSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDTYPE" Type="Int32" Nullable="false" />
+          <Property Name="SUPERFICIER" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRIX" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CONTRATs" Relationship="Self.FK_CONTRAT_LOCAUX" FromRole="LOCAUX" ToRole="CONTRAT" />
+          <NavigationProperty Name="TYPE" Relationship="Self.FK_LOCAUX_TYPE" FromRole="LOCAUX" ToRole="TYPE" />
+          <NavigationProperty Name="TRAVEAUX" Relationship="Self.FK_TRAVEAUX_LOCAUX" FromRole="LOCAUX" ToRole="TRAVEAUX" />
+        </EntityType>
+        <EntityType Name="Responsable">
+          <Key>
+            <PropertyRef Name="IDRESPONSABLE" />
+          </Key>
+          <Property Name="IDRESPONSABLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_PRENOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDVILLE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Agences" Relationship="Self.FK_Agence_Responsable" FromRole="Responsable" ToRole="Agence" />
+          <NavigationProperty Name="Ville" Relationship="Self.FK_Responsable_Ville" FromRole="Responsable" ToRole="Ville" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TRAVEAU">
+          <Key>
+            <PropertyRef Name="IDTRAVEAUX" />
+          </Key>
+          <Property Name="IDTRAVEAUX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATE_TRAVEAUX" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDLOCAUX" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LOCAUX" Relationship="Self.FK_TRAVEAUX_LOCAUX" FromRole="TRAVEAUX" ToRole="LOCAUX" />
+        </EntityType>
+        <EntityType Name="TYPE">
+          <Key>
+            <PropertyRef Name="IDTYPE" />
+          </Key>
+          <Property Name="IDTYPE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LOCAUXes" Relationship="Self.FK_LOCAUX_TYPE" FromRole="TYPE" ToRole="LOCAUX" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="IDVILLE" />
+          </Key>
+          <Property Name="IDVILLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Agences" Relationship="Self.FK_Agence_Ville" FromRole="Ville" ToRole="Agence" />
+          <NavigationProperty Name="Responsables" Relationship="Self.FK_Responsable_Ville" FromRole="Ville" ToRole="Responsable" />
+        </EntityType>
+        <Association Name="FK_Agence_Responsable">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Agence" Type="Self.Agence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="IDRESPONSABLE" />
+            </Principal>
+            <Dependent Role="Agence">
+              <PropertyRef Name="IDRESPONSABLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agence_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Agence" Type="Self.Agence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="Agence">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRAT_Agence">
+          <End Role="Agence" Type="Self.Agence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agence">
+              <PropertyRef Name="IDAGENCE" />
+            </Principal>
+            <Dependent Role="CONTRAT">
+              <PropertyRef Name="IDAGENCE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRAT_CLIEN">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="CNIE" />
+            </Principal>
+            <Dependent Role="CONTRAT">
+              <PropertyRef Name="CNIECLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRAT_LOCAUX">
+          <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCAUX">
+              <PropertyRef Name="IDLOCAUX" />
+            </Principal>
+            <Dependent Role="CONTRAT">
+              <PropertyRef Name="IDLOCAUX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCAUX_TYPE">
+          <End Role="TYPE" Type="Self.TYPE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE">
+              <PropertyRef Name="IDTYPE" />
+            </Principal>
+            <Dependent Role="LOCAUX">
+              <PropertyRef Name="IDTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRAVEAUX_LOCAUX">
+          <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TRAVEAUX" Type="Self.TRAVEAU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCAUX">
+              <PropertyRef Name="IDLOCAUX" />
+            </Principal>
+            <Dependent Role="TRAVEAUX">
+              <PropertyRef Name="IDLOCAUX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responsable_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="IDVILLE" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="IDVILLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Gestion_Agence_LocationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agences" EntityType="Self.Agence" />
+          <EntitySet Name="CLIENTs" EntityType="Self.CLIENT" />
+          <EntitySet Name="CONTRATs" EntityType="Self.CONTRAT" />
+          <EntitySet Name="LOCAUXes" EntityType="Self.LOCAUX" />
+          <EntitySet Name="Responsables" EntityType="Self.Responsable" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TRAVEAUX" EntityType="Self.TRAVEAU" />
+          <EntitySet Name="TYPEs" EntityType="Self.TYPE" />
+          <EntitySet Name="Villes" EntityType="Self.Ville" />
+          <AssociationSet Name="FK_Agence_Responsable" Association="Self.FK_Agence_Responsable">
+            <End Role="Responsable" EntitySet="Responsables" />
+            <End Role="Agence" EntitySet="Agences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agence_Ville" Association="Self.FK_Agence_Ville">
+            <End Role="Ville" EntitySet="Villes" />
+            <End Role="Agence" EntitySet="Agences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRAT_Agence" Association="Self.FK_CONTRAT_Agence">
+            <End Role="Agence" EntitySet="Agences" />
+            <End Role="CONTRAT" EntitySet="CONTRATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRAT_CLIEN" Association="Self.FK_CONTRAT_CLIEN">
+            <End Role="CLIENT" EntitySet="CLIENTs" />
+            <End Role="CONTRAT" EntitySet="CONTRATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRAT_LOCAUX" Association="Self.FK_CONTRAT_LOCAUX">
+            <End Role="LOCAUX" EntitySet="LOCAUXes" />
+            <End Role="CONTRAT" EntitySet="CONTRATs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCAUX_TYPE" Association="Self.FK_LOCAUX_TYPE">
+            <End Role="TYPE" EntitySet="TYPEs" />
+            <End Role="LOCAUX" EntitySet="LOCAUXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRAVEAUX_LOCAUX" Association="Self.FK_TRAVEAUX_LOCAUX">
+            <End Role="LOCAUX" EntitySet="LOCAUXes" />
+            <End Role="TRAVEAUX" EntitySet="TRAVEAUX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responsable_Ville" Association="Self.FK_Responsable_Ville">
+            <End Role="Ville" EntitySet="Villes" />
+            <End Role="Responsable" EntitySet="Responsables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Gestion_Agence_LocationModelStoreContainer" CdmEntityContainer="Gestion_Agence_LocationEntities">
+          <EntitySetMapping Name="Agences">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.Agence">
+              <MappingFragment StoreEntitySet="Agence">
+                <ScalarProperty Name="IDAGENCE" ColumnName="IDAGENCE" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+                <ScalarProperty Name="TELE" ColumnName="TELE" />
+                <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+                <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTs">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.CLIENT">
+              <MappingFragment StoreEntitySet="CLIENT">
+                <ScalarProperty Name="CNIE" ColumnName="CNIE" />
+                <ScalarProperty Name="NOM_PRENOM" ColumnName="NOM_PRENOM" />
+                <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+                <ScalarProperty Name="TELE" ColumnName="TELE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATs">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.CONTRAT">
+              <MappingFragment StoreEntitySet="CONTRAT">
+                <ScalarProperty Name="IDCONTRAT" ColumnName="IDCONTRAT" />
+                <ScalarProperty Name="NUMERO_CONTRAT" ColumnName="NUMERO_CONTRAT" />
+                <ScalarProperty Name="DATEDEBUT" ColumnName="DATEDEBUT" />
+                <ScalarProperty Name="DUREE" ColumnName="DUREE" />
+                <ScalarProperty Name="IDAGENCE" ColumnName="IDAGENCE" />
+                <ScalarProperty Name="IDLOCAUX" ColumnName="IDLOCAUX" />
+                <ScalarProperty Name="CNIECLIENT" ColumnName="CNIECLIENT" />
+                <ScalarProperty Name="PRIX" ColumnName="PRIX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCAUXes">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.LOCAUX">
+              <MappingFragment StoreEntitySet="LOCAUX">
+                <ScalarProperty Name="IDLOCAUX" ColumnName="IDLOCAUX" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+                <ScalarProperty Name="IDTYPE" ColumnName="IDTYPE" />
+                <ScalarProperty Name="SUPERFICIER" ColumnName="SUPERFICIER" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PRIX" ColumnName="PRIX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responsables">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.Responsable">
+              <MappingFragment StoreEntitySet="Responsable">
+                <ScalarProperty Name="IDRESPONSABLE" ColumnName="IDRESPONSABLE" />
+                <ScalarProperty Name="NOM_PRENOM" ColumnName="NOM_PRENOM" />
+                <ScalarProperty Name="TELE" ColumnName="TELE" />
+                <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAVEAUX">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.TRAVEAU">
+              <MappingFragment StoreEntitySet="TRAVEAUX">
+                <ScalarProperty Name="IDTRAVEAUX" ColumnName="IDTRAVEAUX" />
+                <ScalarProperty Name="DATE_TRAVEAUX" ColumnName="DATE_TRAVEAUX" />
+                <ScalarProperty Name="IDLOCAUX" ColumnName="IDLOCAUX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEs">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.TYPE">
+              <MappingFragment StoreEntitySet="TYPE">
+                <ScalarProperty Name="IDTYPE" ColumnName="IDTYPE" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Villes">
+            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.Ville">
+              <MappingFragment StoreEntitySet="Ville">
+                <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

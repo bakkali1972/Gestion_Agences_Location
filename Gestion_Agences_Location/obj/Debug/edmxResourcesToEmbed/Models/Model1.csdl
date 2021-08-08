@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gestion_Agence_LocationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agence">
+    <Key>
+      <PropertyRef Name="IDAGENCE" />
+    </Key>
+    <Property Name="IDAGENCE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADRESSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TELE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDVILLE" Type="Int32" Nullable="false" />
+    <Property Name="IDRESPONSABLE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Responsable" Relationship="Self.FK_Agence_Responsable" FromRole="Agence" ToRole="Responsable" />
+    <NavigationProperty Name="Ville" Relationship="Self.FK_Agence_Ville" FromRole="Agence" ToRole="Ville" />
+    <NavigationProperty Name="CONTRATs" Relationship="Self.FK_CONTRAT_Agence" FromRole="Agence" ToRole="CONTRAT" />
+  </EntityType>
+  <EntityType Name="CLIENT">
+    <Key>
+      <PropertyRef Name="CNIE" />
+    </Key>
+    <Property Name="CNIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOM_PRENOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ADRESSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TELE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CONTRATs" Relationship="Self.FK_CONTRAT_CLIEN" FromRole="CLIENT" ToRole="CONTRAT" />
+  </EntityType>
+  <EntityType Name="CONTRAT">
+    <Key>
+      <PropertyRef Name="IDCONTRAT" />
+    </Key>
+    <Property Name="IDCONTRAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NUMERO_CONTRAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATEDEBUT" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DUREE" Type="Int32" Nullable="false" />
+    <Property Name="IDAGENCE" Type="Int32" Nullable="false" />
+    <Property Name="IDLOCAUX" Type="Int32" Nullable="false" />
+    <Property Name="CNIECLIENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRIX" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Agence" Relationship="Self.FK_CONTRAT_Agence" FromRole="CONTRAT" ToRole="Agence" />
+    <NavigationProperty Name="CLIENT" Relationship="Self.FK_CONTRAT_CLIEN" FromRole="CONTRAT" ToRole="CLIENT" />
+    <NavigationProperty Name="LOCAUX" Relationship="Self.FK_CONTRAT_LOCAUX" FromRole="CONTRAT" ToRole="LOCAUX" />
+  </EntityType>
+  <EntityType Name="LOCAUX">
+    <Key>
+      <PropertyRef Name="IDLOCAUX" />
+    </Key>
+    <Property Name="IDLOCAUX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADRESSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDTYPE" Type="Int32" Nullable="false" />
+    <Property Name="SUPERFICIER" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PRIX" Type="Double" Nullable="false" />
+    <NavigationProperty Name="CONTRATs" Relationship="Self.FK_CONTRAT_LOCAUX" FromRole="LOCAUX" ToRole="CONTRAT" />
+    <NavigationProperty Name="TYPE" Relationship="Self.FK_LOCAUX_TYPE" FromRole="LOCAUX" ToRole="TYPE" />
+    <NavigationProperty Name="TRAVEAUX" Relationship="Self.FK_TRAVEAUX_LOCAUX" FromRole="LOCAUX" ToRole="TRAVEAUX" />
+  </EntityType>
+  <EntityType Name="Responsable">
+    <Key>
+      <PropertyRef Name="IDRESPONSABLE" />
+    </Key>
+    <Property Name="IDRESPONSABLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOM_PRENOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TELE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDVILLE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Agences" Relationship="Self.FK_Agence_Responsable" FromRole="Responsable" ToRole="Agence" />
+    <NavigationProperty Name="Ville" Relationship="Self.FK_Responsable_Ville" FromRole="Responsable" ToRole="Ville" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TRAVEAU">
+    <Key>
+      <PropertyRef Name="IDTRAVEAUX" />
+    </Key>
+    <Property Name="IDTRAVEAUX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DATE_TRAVEAUX" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IDLOCAUX" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LOCAUX" Relationship="Self.FK_TRAVEAUX_LOCAUX" FromRole="TRAVEAUX" ToRole="LOCAUX" />
+  </EntityType>
+  <EntityType Name="TYPE">
+    <Key>
+      <PropertyRef Name="IDTYPE" />
+    </Key>
+    <Property Name="IDTYPE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LOCAUXes" Relationship="Self.FK_LOCAUX_TYPE" FromRole="TYPE" ToRole="LOCAUX" />
+  </EntityType>
+  <EntityType Name="Ville">
+    <Key>
+      <PropertyRef Name="IDVILLE" />
+    </Key>
+    <Property Name="IDVILLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Agences" Relationship="Self.FK_Agence_Ville" FromRole="Ville" ToRole="Agence" />
+    <NavigationProperty Name="Responsables" Relationship="Self.FK_Responsable_Ville" FromRole="Ville" ToRole="Responsable" />
+  </EntityType>
+  <Association Name="FK_Agence_Responsable">
+    <End Role="Responsable" Type="Self.Responsable" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Agence" Type="Self.Agence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Responsable">
+        <PropertyRef Name="IDRESPONSABLE" />
+      </Principal>
+      <Dependent Role="Agence">
+        <PropertyRef Name="IDRESPONSABLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agence_Ville">
+    <End Role="Ville" Type="Self.Ville" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Agence" Type="Self.Agence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="IDVILLE" />
+      </Principal>
+      <Dependent Role="Agence">
+        <PropertyRef Name="IDVILLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRAT_Agence">
+    <End Role="Agence" Type="Self.Agence" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agence">
+        <PropertyRef Name="IDAGENCE" />
+      </Principal>
+      <Dependent Role="CONTRAT">
+        <PropertyRef Name="IDAGENCE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRAT_CLIEN">
+    <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENT">
+        <PropertyRef Name="CNIE" />
+      </Principal>
+      <Dependent Role="CONTRAT">
+        <PropertyRef Name="CNIECLIENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRAT_LOCAUX">
+    <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CONTRAT" Type="Self.CONTRAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCAUX">
+        <PropertyRef Name="IDLOCAUX" />
+      </Principal>
+      <Dependent Role="CONTRAT">
+        <PropertyRef Name="IDLOCAUX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOCAUX_TYPE">
+    <End Role="TYPE" Type="Self.TYPE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPE">
+        <PropertyRef Name="IDTYPE" />
+      </Principal>
+      <Dependent Role="LOCAUX">
+        <PropertyRef Name="IDTYPE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRAVEAUX_LOCAUX">
+    <End Role="LOCAUX" Type="Self.LOCAUX" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TRAVEAUX" Type="Self.TRAVEAU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCAUX">
+        <PropertyRef Name="IDLOCAUX" />
+      </Principal>
+      <Dependent Role="TRAVEAUX">
+        <PropertyRef Name="IDLOCAUX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Responsable_Ville">
+    <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+    <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="IDVILLE" />
+      </Principal>
+      <Dependent Role="Responsable">
+        <PropertyRef Name="IDVILLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Gestion_Agence_LocationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agences" EntityType="Self.Agence" />
+    <EntitySet Name="CLIENTs" EntityType="Self.CLIENT" />
+    <EntitySet Name="CONTRATs" EntityType="Self.CONTRAT" />
+    <EntitySet Name="LOCAUXes" EntityType="Self.LOCAUX" />
+    <EntitySet Name="Responsables" EntityType="Self.Responsable" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TRAVEAUX" EntityType="Self.TRAVEAU" />
+    <EntitySet Name="TYPEs" EntityType="Self.TYPE" />
+    <EntitySet Name="Villes" EntityType="Self.Ville" />
+    <AssociationSet Name="FK_Agence_Responsable" Association="Self.FK_Agence_Responsable">
+      <End Role="Responsable" EntitySet="Responsables" />
+      <End Role="Agence" EntitySet="Agences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agence_Ville" Association="Self.FK_Agence_Ville">
+      <End Role="Ville" EntitySet="Villes" />
+      <End Role="Agence" EntitySet="Agences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRAT_Agence" Association="Self.FK_CONTRAT_Agence">
+      <End Role="Agence" EntitySet="Agences" />
+      <End Role="CONTRAT" EntitySet="CONTRATs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRAT_CLIEN" Association="Self.FK_CONTRAT_CLIEN">
+      <End Role="CLIENT" EntitySet="CLIENTs" />
+      <End Role="CONTRAT" EntitySet="CONTRATs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRAT_LOCAUX" Association="Self.FK_CONTRAT_LOCAUX">
+      <End Role="LOCAUX" EntitySet="LOCAUXes" />
+      <End Role="CONTRAT" EntitySet="CONTRATs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOCAUX_TYPE" Association="Self.FK_LOCAUX_TYPE">
+      <End Role="TYPE" EntitySet="TYPEs" />
+      <End Role="LOCAUX" EntitySet="LOCAUXes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRAVEAUX_LOCAUX" Association="Self.FK_TRAVEAUX_LOCAUX">
+      <End Role="LOCAUX" EntitySet="LOCAUXes" />
+      <End Role="TRAVEAUX" EntitySet="TRAVEAUX" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Responsable_Ville" Association="Self.FK_Responsable_Ville">
+      <End Role="Ville" EntitySet="Villes" />
+      <End Role="Responsable" EntitySet="Responsables" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
