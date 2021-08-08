@@ -30,7 +30,6 @@ namespace Gestion_Agences_Location.Models
         public virtual DbSet<CONTRAT> CONTRATs { get; set; }
         public virtual DbSet<LOCAUX> LOCAUXes { get; set; }
         public virtual DbSet<Responsable> Responsables { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TRAVEAU> TRAVEAUX { get; set; }
         public virtual DbSet<TYPE> TYPEs { get; set; }
         public virtual DbSet<Ville> Villes { get; set; }

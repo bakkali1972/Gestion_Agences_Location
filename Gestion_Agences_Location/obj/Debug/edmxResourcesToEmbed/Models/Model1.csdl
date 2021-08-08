@@ -66,16 +66,6 @@
     <NavigationProperty Name="Agences" Relationship="Self.FK_Agence_Responsable" FromRole="Responsable" ToRole="Agence" />
     <NavigationProperty Name="Ville" Relationship="Self.FK_Responsable_Ville" FromRole="Responsable" ToRole="Ville" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="TRAVEAU">
     <Key>
       <PropertyRef Name="IDTRAVEAUX" />
@@ -218,7 +208,6 @@
     <EntitySet Name="CONTRATs" EntityType="Self.CONTRAT" />
     <EntitySet Name="LOCAUXes" EntityType="Self.LOCAUX" />
     <EntitySet Name="Responsables" EntityType="Self.Responsable" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TRAVEAUX" EntityType="Self.TRAVEAU" />
     <EntitySet Name="TYPEs" EntityType="Self.TYPE" />
     <EntitySet Name="Villes" EntityType="Self.Ville" />

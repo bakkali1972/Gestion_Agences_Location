@@ -59,16 +59,6 @@
           <Property Name="TELE" Type="varchar" MaxLength="50" />
           <Property Name="IDVILLE" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TRAVEAUX">
           <Key>
             <PropertyRef Name="IDTRAVEAUX" />
@@ -207,7 +197,6 @@
           <EntitySet Name="CONTRAT" EntityType="Self.CONTRAT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOCAUX" EntityType="Self.LOCAUX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Responsable" EntityType="Self.Responsable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TRAVEAUX" EntityType="Self.TRAVEAUX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TYPE" EntityType="Self.TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
@@ -314,16 +303,6 @@
           <Property Name="IDVILLE" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Agences" Relationship="Self.FK_Agence_Responsable" FromRole="Responsable" ToRole="Agence" />
           <NavigationProperty Name="Ville" Relationship="Self.FK_Responsable_Ville" FromRole="Responsable" ToRole="Ville" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TRAVEAU">
           <Key>
@@ -467,7 +446,6 @@
           <EntitySet Name="CONTRATs" EntityType="Self.CONTRAT" />
           <EntitySet Name="LOCAUXes" EntityType="Self.LOCAUX" />
           <EntitySet Name="Responsables" EntityType="Self.Responsable" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TRAVEAUX" EntityType="Self.TRAVEAU" />
           <EntitySet Name="TYPEs" EntityType="Self.TYPE" />
           <EntitySet Name="Villes" EntityType="Self.Ville" />
@@ -566,17 +544,6 @@
                 <ScalarProperty Name="NOM_PRENOM" ColumnName="NOM_PRENOM" />
                 <ScalarProperty Name="TELE" ColumnName="TELE" />
                 <ScalarProperty Name="IDVILLE" ColumnName="IDVILLE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Gestion_Agence_LocationModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

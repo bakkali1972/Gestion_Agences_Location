@@ -217,6 +217,7 @@
             this.btnAjoutter.TabIndex = 46;
             this.btnAjoutter.Text = "Ajouter";
             this.btnAjoutter.UseVisualStyleBackColor = true;
+            this.btnAjoutter.Click += new System.EventHandler(this.btnAjoutter_Click);
             // 
             // label2
             // 
@@ -246,6 +247,7 @@
             this.Controls.Add(this.label2);
             this.Name = "Agence";
             this.Text = "Agence";
+            this.Load += new System.EventHandler(this.Agence_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
