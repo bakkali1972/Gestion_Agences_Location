@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Controller_Agence.cs" />
+    <Compile Include="Controllers\Controller_Responsable.cs" />
     <Compile Include="Controllers\Controller_Ville.cs" />
     <Compile Include="Models\Agence.cs">
       <DependentUpon>Model1.tt</DependentUpon>

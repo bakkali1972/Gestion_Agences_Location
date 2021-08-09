@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ADRESSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDAGENCE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.TELE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtTelephone_Agence = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CmbVille = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNom_Agence = new System.Windows.Forms.TextBox();
@@ -45,49 +45,38 @@
             this.BtnRechercher = new System.Windows.Forms.Button();
             this.btnAjoutter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CmbVille = new System.Windows.Forms.ComboBox();
             this.CmbResponsable = new System.Windows.Forms.ComboBox();
+            this.IDAGENCE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ADRESSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TELE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDVILLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDRESPONSABLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RESPONSABLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VILLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONTRATs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ADRESSE
-            // 
-            this.ADRESSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ADRESSE.DataPropertyName = "ADRESSE";
-            this.ADRESSE.HeaderText = "ADRESSE";
-            this.ADRESSE.Name = "ADRESSE";
-            this.ADRESSE.Visible = false;
-            // 
-            // IDAGENCE
-            // 
-            this.IDAGENCE.DataPropertyName = "IDAGENCE";
-            this.IDAGENCE.HeaderText = "ID AGENCE";
-            this.IDAGENCE.Name = "IDAGENCE";
-            this.IDAGENCE.Visible = false;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDAGENCE,
+            this.nom,
+            this.ADRESSE,
             this.TELE,
-            this.ADRESSE});
+            this.IDVILLE,
+            this.IDRESPONSABLE,
+            this.RESPONSABLE,
+            this.VILLE,
+            this.CONTRATs});
             this.dataGridView1.Location = new System.Drawing.Point(574, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(788, 689);
+            this.dataGridView1.Size = new System.Drawing.Size(771, 689);
             this.dataGridView1.TabIndex = 52;
-            // 
-            // TELE
-            // 
-            this.TELE.DataPropertyName = "TELE";
-            this.TELE.HeaderText = "TELEPHONE";
-            this.TELE.Name = "TELE";
-            this.TELE.Visible = false;
-            this.TELE.Width = 200;
             // 
             // TxtTelephone_Agence
             // 
@@ -99,7 +88,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CmbVille);
+            this.groupBox1.Controls.Add(this.CmbResponsable);
             this.groupBox1.Controls.Add(this.CmbVille);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
@@ -114,6 +103,34 @@
             this.groupBox1.Size = new System.Drawing.Size(559, 296);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
+            // 
+            // CmbVille
+            // 
+            this.CmbVille.FormattingEnabled = true;
+            this.CmbVille.Location = new System.Drawing.Point(207, 192);
+            this.CmbVille.Name = "CmbVille";
+            this.CmbVille.Size = new System.Drawing.Size(330, 24);
+            this.CmbVille.TabIndex = 36;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Gainsboro;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 192);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(177, 30);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Ville";
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Gainsboro;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(14, 248);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(177, 30);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Responsable";
             // 
             // label4
             // 
@@ -239,43 +256,77 @@
             this.label2.Text = "AGENCE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // CmbResponsable
             // 
-            this.label5.BackColor = System.Drawing.Color.Gainsboro;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 192);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(177, 30);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "Ville";
+            this.CmbResponsable.FormattingEnabled = true;
+            this.CmbResponsable.Location = new System.Drawing.Point(207, 248);
+            this.CmbResponsable.Name = "CmbResponsable";
+            this.CmbResponsable.Size = new System.Drawing.Size(330, 24);
+            this.CmbResponsable.TabIndex = 37;
             // 
-            // label6
+            // IDAGENCE
             // 
-            this.label6.BackColor = System.Drawing.Color.Gainsboro;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(14, 248);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(177, 30);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Responsable";
+            this.IDAGENCE.DataPropertyName = "IDAGENCE";
+            this.IDAGENCE.HeaderText = "ID AGENCE";
+            this.IDAGENCE.Name = "IDAGENCE";
+            this.IDAGENCE.Visible = false;
             // 
-            // CmbVille
+            // nom
             // 
-            this.CmbVille.FormattingEnabled = true;
-            this.CmbVille.Location = new System.Drawing.Point(207, 197);
-            this.CmbVille.Name = "CmbVille";
-            this.CmbVille.Size = new System.Drawing.Size(330, 24);
-            this.CmbVille.TabIndex = 36;
+            this.nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nom.DataPropertyName = "NOM";
+            this.nom.HeaderText = "nom";
+            this.nom.Name = "nom";
             // 
-            // CmbVille
+            // ADRESSE
             // 
-            this.CmbVille.FormattingEnabled = true;
-            this.CmbVille.Location = new System.Drawing.Point(207, 248);
-            this.CmbVille.Name = "CmbResponsable";
-            this.CmbVille.Size = new System.Drawing.Size(330, 24);
-            this.CmbVille.TabIndex = 37;
+            this.ADRESSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ADRESSE.DataPropertyName = "ADRESSE";
+            this.ADRESSE.HeaderText = "ADRESSE";
+            this.ADRESSE.Name = "ADRESSE";
             // 
-            // Agence
+            // TELE
+            // 
+            this.TELE.DataPropertyName = "TELE";
+            this.TELE.HeaderText = "TELEPHONE";
+            this.TELE.Name = "TELE";
+            this.TELE.Width = 200;
+            // 
+            // IDVILLE
+            // 
+            this.IDVILLE.DataPropertyName = "IDVILLE";
+            this.IDVILLE.HeaderText = "IDVILLE";
+            this.IDVILLE.Name = "IDVILLE";
+            this.IDVILLE.Visible = false;
+            // 
+            // IDRESPONSABLE
+            // 
+            this.IDRESPONSABLE.DataPropertyName = "IDRESPONSABLE";
+            this.IDRESPONSABLE.HeaderText = "IDRESPONSABLE";
+            this.IDRESPONSABLE.Name = "IDRESPONSABLE";
+            this.IDRESPONSABLE.Visible = false;
+            // 
+            // RESPONSABLE
+            // 
+            this.RESPONSABLE.DataPropertyName = "Responsable";
+            this.RESPONSABLE.HeaderText = "RESPONSABLE";
+            this.RESPONSABLE.Name = "RESPONSABLE";
+            this.RESPONSABLE.Visible = false;
+            // 
+            // VILLE
+            // 
+            this.VILLE.DataPropertyName = "Ville";
+            this.VILLE.HeaderText = "VILLE";
+            this.VILLE.Name = "VILLE";
+            // 
+            // CONTRATs
+            // 
+            this.CONTRATs.DataPropertyName = "CONTRATs";
+            this.CONTRATs.HeaderText = "CONTRATs";
+            this.CONTRATs.Name = "CONTRATs";
+            this.CONTRATs.Visible = false;
+            // 
+            // Form_Agence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -289,7 +340,7 @@
             this.Controls.Add(this.BtnRechercher);
             this.Controls.Add(this.btnAjoutter);
             this.Controls.Add(this.label2);
-            this.Name = "Agence";
+            this.Name = "Form_Agence";
             this.Text = "Agence";
             this.Load += new System.EventHandler(this.Agence_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -300,11 +351,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn ADRESSE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDAGENCE;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TELE;
         private System.Windows.Forms.TextBox TxtTelephone_Agence;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
@@ -322,5 +369,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CmbVille;
         private System.Windows.Forms.ComboBox CmbResponsable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDAGENCE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ADRESSE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TELE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDVILLE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDRESPONSABLE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RESPONSABLE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VILLE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CONTRATs;
     }
 }

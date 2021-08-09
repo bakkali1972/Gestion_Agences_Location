@@ -23,13 +23,15 @@ namespace Gestion_Agences_Location.Views
         private void Agence_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = new Controller_Agence().getAll();
+
+
             CmbVille.DataSource = new Controller_Ville().getAll();
             CmbVille.DisplayMember = "NOM";
             CmbVille.ValueMember = "IDVILLE";
 
-            //CmbVille.DataSource = "";
-            //CmbVille.DisplayMember = "NOM";
-            //CmbVille.ValueMember = "IDVille";
+            CmbResponsable.DataSource = new Controller_Responsable().getAll();
+            CmbResponsable.DisplayMember = "NOM_PRENOM";
+            CmbResponsable.ValueMember = "IDRESPONSABLE";
         }
 
         //TODO: Modification apres ajout combobox Ville et Ville

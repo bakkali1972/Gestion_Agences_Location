@@ -17,7 +17,7 @@ namespace Gestion_Agences_Location
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Ville());
+            Application.Run(new Form_Agence());
         }
     }
 }
