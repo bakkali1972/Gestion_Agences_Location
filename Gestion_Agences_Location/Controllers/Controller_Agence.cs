@@ -41,15 +41,15 @@ namespace Gestion_Agences_Location.Controllers
         }
 
 
-        public Agence getByResponsable(int idResponsable)
-        {
-            Agence agence = new Agence();
-            using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
-            {
-                agence = _context.Agences.FirstOrDefault(e => e.IDRESPONSABLE == idResponsable);
-            }
-            return agence;
-        }
+        //public Agence getByVille(int idVille)
+        //{
+        //    Agence agence = new Agence();
+        //    using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
+        //    {
+        //        agence = _context.Agences.FirstOrDefault(e => e.IDVille == idVille);
+        //    }
+        //    return agence;
+        //}
 
         public void Modifier(Agence agence)
         {

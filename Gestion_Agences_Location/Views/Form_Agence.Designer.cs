@@ -99,7 +99,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CmbResponsable);
+            this.groupBox1.Controls.Add(this.CmbVille);
             this.groupBox1.Controls.Add(this.CmbVille);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
@@ -267,13 +267,13 @@
             this.CmbVille.Size = new System.Drawing.Size(330, 24);
             this.CmbVille.TabIndex = 36;
             // 
-            // CmbResponsable
+            // CmbVille
             // 
-            this.CmbResponsable.FormattingEnabled = true;
-            this.CmbResponsable.Location = new System.Drawing.Point(207, 248);
-            this.CmbResponsable.Name = "CmbResponsable";
-            this.CmbResponsable.Size = new System.Drawing.Size(330, 24);
-            this.CmbResponsable.TabIndex = 37;
+            this.CmbVille.FormattingEnabled = true;
+            this.CmbVille.Location = new System.Drawing.Point(207, 248);
+            this.CmbVille.Name = "CmbResponsable";
+            this.CmbVille.Size = new System.Drawing.Size(330, 24);
+            this.CmbVille.TabIndex = 37;
             // 
             // Agence
             // 
@@ -320,7 +320,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox CmbResponsable;
         private System.Windows.Forms.ComboBox CmbVille;
+        private System.Windows.Forms.ComboBox CmbResponsable;
     }
 }

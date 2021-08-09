@@ -20,6 +20,8 @@ namespace Gestion_Agences_Location.Views
             InitializeComponent();
         }
 
+        int idville;
+
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = new Controller_Ville().getAll();
@@ -57,7 +59,7 @@ namespace Gestion_Agences_Location.Views
             if (MessageBox.Show("Voulez vous supprimer Ville " + TxtNom_Ville.Text, "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
 
-                if (new Controller_Ville().Suprimer(TxtNom_Ville.Text))
+                if (new Controller_Ville().Suprimer(TxtNom_Ville.Text)==true)
                 {
                     BtnNouveau_Click(sender, e);
                     MessageBox.Show("Ville " + TxtNom_Ville.Text + " a été supprimé ");
@@ -72,21 +74,20 @@ namespace Gestion_Agences_Location.Views
         int index;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index = dataGridView1.CurrentRow.Index;
-            TxtNom_Ville.Text = dataGridView1.Rows[index].Cells["NOM"].Value.ToString();
+            
             
         }
 
 
-        //TODO PROBLEME
+
         private void BtnModifier_Click(object sender, EventArgs e)
         {
             Ville ville = new Ville()
             {
+                IDVILLE = idville,
                 NOM = TxtNom_Ville.Text,
-               
             };
-            if (new Controller_Ville().Modifier(TxtNom_Ville.Text))
+            if (new Controller_Ville().Modifier(ville))
             {
                 BtnNouveau_Click(sender, e);
                 MessageBox.Show("Ville " + TxtNom_Ville.Text + " a été Modifié ");
@@ -97,6 +98,23 @@ namespace Gestion_Agences_Location.Views
             }
 
 
+        }
+
+        private void Form_Ville_Load(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = new Controller_Ville().getAll();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            index = dataGridView1.CurrentRow.Index;
+            idville = Convert.ToInt32(dataGridView1.Rows[index].Cells["IDV"].Value.ToString());
+            TxtNom_Ville.Text = dataGridView1.Rows[index].Cells["NOM"].Value.ToString();
         }
     }
 }

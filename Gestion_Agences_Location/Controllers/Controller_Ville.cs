@@ -22,14 +22,14 @@ namespace Gestion_Agences_Location.Controllers
         }
 
 
-        public Ville getByName(string nom)
+        public List<Ville> getByName(string nom)
         {
-            Ville ville = new Ville();
+            
             using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
             {
-               ville = _context.Villes.FirstOrDefault(e => e.NOM.Contains(nom));
+                lisetVille = _context.Villes.Where(e => e.NOM.Contains(nom)).ToList();
             }
-            return ville;
+            return lisetVille;
         }
 
 
@@ -46,31 +46,39 @@ namespace Gestion_Agences_Location.Controllers
 
         
 
-        public void Modifier(Ville ville)
+        public bool Modifier(Ville ville)
         {
+            bool done = false;
           Ville _ville = new Ville();
             using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
             {
-                _ville = _context.Villes.FirstOrDefault(e => e.NOM == ville.NOM);
+                _ville = _context.Villes.FirstOrDefault(e => e.IDVILLE == ville.IDVILLE);
                 if (_ville != null)
                 {
                     _ville.NOM = ville.NOM;
-                 
+                    _context.SaveChanges();
+                    done = true;
                 }
             }
+            return done;
         }
 
-        public void Suprimer(int idVille)
+        public bool Suprimer(string nomVille)
         {
+            bool done = false;
+
             Ville _ville = new Ville();
             using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
             {
-                _ville = _context.Villes.FirstOrDefault(e => e.IDVILLE == idVille);
+                _ville = _context.Villes.FirstOrDefault(e => e.NOM == nomVille);
                 if (_ville != null)
                 {
                     _context.Villes.Remove(_ville);
+                    _context.SaveChanges();
+                    done = true;
                 }
             }
+            return done;
         }
 
 

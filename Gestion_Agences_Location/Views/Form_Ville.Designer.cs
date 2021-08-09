@@ -35,13 +35,15 @@
             this.btnAjoutter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtNom_Ville = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Id_Ville = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.AGENCES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RESPONSABLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnNouveau
@@ -129,23 +131,10 @@
             // TxtNom_Ville
             // 
             this.TxtNom_Ville.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNom_Ville.Location = new System.Drawing.Point(207, 31);
+            this.TxtNom_Ville.Location = new System.Drawing.Point(212, 115);
             this.TxtNom_Ville.Name = "TxtNom_Ville";
             this.TxtNom_Ville.Size = new System.Drawing.Size(330, 30);
             this.TxtNom_Ville.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id_Ville,
-            this.NOM});
-            this.dataGridView1.Location = new System.Drawing.Point(593, -4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(802, 689);
-            this.dataGridView1.TabIndex = 60;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // groupBox1
             // 
@@ -161,18 +150,33 @@
             // 
             this.label4.BackColor = System.Drawing.Color.Gainsboro;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 34);
+            this.label4.Location = new System.Drawing.Point(19, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(177, 30);
             this.label4.TabIndex = 33;
             this.label4.Text = "Nom";
             // 
-            // Id_Ville
+            // dataGridView1
             // 
-            this.Id_Ville.DataPropertyName = "ID_VILLE";
-            this.Id_Ville.HeaderText = "ID_VILLE";
-            this.Id_Ville.Name = "Id_Ville";
-            this.Id_Ville.Visible = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDV,
+            this.NOM,
+            this.AGENCES,
+            this.RESPONSABLES});
+            this.dataGridView1.Location = new System.Drawing.Point(617, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(768, 637);
+            this.dataGridView1.TabIndex = 60;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick_1);
+            // 
+            // IDV
+            // 
+            this.IDV.DataPropertyName = "IDVILLE";
+            this.IDV.HeaderText = "IDVILLE";
+            this.IDV.Name = "IDV";
+            this.IDV.Visible = false;
             // 
             // NOM
             // 
@@ -181,25 +185,40 @@
             this.NOM.HeaderText = "NOM";
             this.NOM.Name = "NOM";
             // 
+            // AGENCES
+            // 
+            this.AGENCES.DataPropertyName = "Agences";
+            this.AGENCES.HeaderText = "AGENCES";
+            this.AGENCES.Name = "AGENCES";
+            this.AGENCES.Visible = false;
+            // 
+            // RESPONSABLES
+            // 
+            this.RESPONSABLES.DataPropertyName = "Responsables";
+            this.RESPONSABLES.HeaderText = "RESPONSABLE";
+            this.RESPONSABLES.Name = "RESPONSABLES";
+            this.RESPONSABLES.Visible = false;
+            // 
             // Form_Ville
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(1407, 680);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnNouveau);
             this.Controls.Add(this.BtnSupprimer);
             this.Controls.Add(this.BtnModifier);
             this.Controls.Add(this.BtnRechercher);
             this.Controls.Add(this.btnAjoutter);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_Ville";
             this.Text = "Form_Ville";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Form_Ville_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,10 +232,12 @@
         private System.Windows.Forms.Button btnAjoutter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtNom_Ville;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Ville;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDV;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AGENCES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RESPONSABLES;
     }
 }
