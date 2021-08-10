@@ -46,5 +46,10 @@ namespace Gestion_Agences_Location.Views
                 IDRESPONSABLE = Convert.ToInt32(CmbResponsable.SelectedValue),
             };
         }
+
+        private void BtnNouveau_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

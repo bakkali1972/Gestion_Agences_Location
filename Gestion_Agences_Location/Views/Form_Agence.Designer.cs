@@ -31,6 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TxtTelephone_Agence = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CmbResponsable = new System.Windows.Forms.ComboBox();
             this.CmbVille = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.BtnRechercher = new System.Windows.Forms.Button();
             this.btnAjoutter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.CmbResponsable = new System.Windows.Forms.ComboBox();
             this.IDAGENCE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ADRESSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +75,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(574, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(771, 689);
+            this.dataGridView1.Size = new System.Drawing.Size(781, 689);
             this.dataGridView1.TabIndex = 52;
             // 
             // TxtTelephone_Agence
@@ -103,6 +103,14 @@
             this.groupBox1.Size = new System.Drawing.Size(559, 296);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
+            // 
+            // CmbResponsable
+            // 
+            this.CmbResponsable.FormattingEnabled = true;
+            this.CmbResponsable.Location = new System.Drawing.Point(207, 248);
+            this.CmbResponsable.Name = "CmbResponsable";
+            this.CmbResponsable.Size = new System.Drawing.Size(330, 24);
+            this.CmbResponsable.TabIndex = 37;
             // 
             // CmbVille
             // 
@@ -190,6 +198,7 @@
             this.BtnNouveau.TabIndex = 45;
             this.BtnNouveau.Text = "Nouveau";
             this.BtnNouveau.UseVisualStyleBackColor = true;
+            this.BtnNouveau.Click += new System.EventHandler(this.BtnNouveau_Click);
             // 
             // BtnSupprimer
             // 
@@ -256,14 +265,6 @@
             this.label2.Text = "AGENCE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CmbResponsable
-            // 
-            this.CmbResponsable.FormattingEnabled = true;
-            this.CmbResponsable.Location = new System.Drawing.Point(207, 248);
-            this.CmbResponsable.Name = "CmbResponsable";
-            this.CmbResponsable.Size = new System.Drawing.Size(330, 24);
-            this.CmbResponsable.TabIndex = 37;
-            // 
             // IDAGENCE
             // 
             this.IDAGENCE.DataPropertyName = "IDAGENCE";
@@ -275,7 +276,7 @@
             // 
             this.nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nom.DataPropertyName = "NOM";
-            this.nom.HeaderText = "nom";
+            this.nom.HeaderText = "NOM";
             this.nom.Name = "nom";
             // 
             // ADRESSE
