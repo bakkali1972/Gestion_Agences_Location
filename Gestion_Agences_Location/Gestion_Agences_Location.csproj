@@ -109,6 +109,18 @@
     <Compile Include="Views\Form_Agence.Designer.cs">
       <DependentUpon>Form_Agence.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Form_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Form_Menu.Designer.cs">
+      <DependentUpon>Form_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Form_Responsable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Form_Responsable.Designer.cs">
+      <DependentUpon>Form_Responsable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Form_Ville.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,12 @@
     </Compile>
     <EmbeddedResource Include="Views\Form_Agence.resx">
       <DependentUpon>Form_Agence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form_Menu.resx">
+      <DependentUpon>Form_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Form_Responsable.resx">
+      <DependentUpon>Form_Responsable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Form_Ville.resx">
       <DependentUpon>Form_Ville.cs</DependentUpon>

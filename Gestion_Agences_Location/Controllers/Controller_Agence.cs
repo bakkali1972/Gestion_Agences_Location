@@ -12,11 +12,12 @@ namespace Gestion_Agences_Location.Controllers
     {
 
         List<Agence> lisetAgences = new List<Agence>();
-
+        //todo: lazy loading à corrigé
         public List<Agence> getAll()
         {
             using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
             {
+               // _context.Configuration.LazyLoadingEnabled = false;
                 lisetAgences = _context.Agences.ToList();
             }
             return lisetAgences;
@@ -62,6 +63,7 @@ namespace Gestion_Agences_Location.Controllers
                     _agence.NOM = agence.NOM;
                     _agence.ADRESSE = agence.ADRESSE;
                     _agence.TELE = agence.TELE;
+                    _context.SaveChanges();
                 }
             }
         }
@@ -75,10 +77,19 @@ namespace Gestion_Agences_Location.Controllers
                 if (_agence != null)
                 {
                     _context.Agences.Remove(_agence);
+                    _context.SaveChanges();
                 }
             }
         }
 
+        public void Ajouter(Agence agence)
+        {
+            using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
+            {
+                _context.Agences.Add(agence);
+                _context.SaveChanges();
+            }
+        }
 
     }
 }

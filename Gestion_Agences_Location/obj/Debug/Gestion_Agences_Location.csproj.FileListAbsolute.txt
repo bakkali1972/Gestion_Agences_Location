@@ -12,3 +12,5 @@ D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gesti
 D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.pdb
 D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.Views.Form_Agence.resources
 D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.Views.Form_Ville.resources
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.Views.Form_Menu.resources
+D:\Projet_2021\Gestion_Agences_Location\Gestion_Agences_Location\obj\Debug\Gestion_Agences_Location.Views.Form_Responsable.resources

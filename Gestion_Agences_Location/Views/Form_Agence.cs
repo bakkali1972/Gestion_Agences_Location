@@ -18,8 +18,8 @@ namespace Gestion_Agences_Location.Views
         {
             InitializeComponent();
         }
-
-        //todo: a complre apres la creation de controlleur Ville
+        int idAgence, index;
+       
         private void Agence_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = new Controller_Agence().getAll();
@@ -34,7 +34,7 @@ namespace Gestion_Agences_Location.Views
             CmbResponsable.ValueMember = "IDRESPONSABLE";
         }
 
-        //TODO: Modification apres ajout combobox Ville et Ville
+       
         private void btnAjoutter_Click(object sender, EventArgs e)
         {
             Agence agence = new Agence()
@@ -45,11 +45,63 @@ namespace Gestion_Agences_Location.Views
                 IDVILLE = Convert.ToInt32(CmbVille.SelectedValue),
                 IDRESPONSABLE = Convert.ToInt32(CmbResponsable.SelectedValue),
             };
+            new Controller_Agence().Ajouter(agence);
+            BtnNouveau_Click(sender, e);
         }
+
 
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = new Controller_Agence().getAll();
+            TxtNom_Agence.Clear();
+            TxtAdresse_Agence.Clear();
+            TxtTelephone_Agence.Clear();
+            CmbResponsable.Text = "";
+            CmbVille.Text = "";
+            TxtNom_Agence.Focus();
+            dataGridView1.DataSource = new Controller_Agence().getAll();
+        }
 
+        private void BtnRechercher_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = new Controller_Agence().getByName(TxtNom_Agence.Text);
+        }
+
+        private void BtnModifier_Click(object sender, EventArgs e)
+        {
+            Agence agence = new Agence()
+            {
+                NOM = TxtNom_Agence.Text,
+                ADRESSE = TxtAdresse_Agence.Text,
+                TELE = TxtTelephone_Agence.Text,
+                IDVILLE = Convert.ToInt32(CmbVille.SelectedValue),
+                IDRESPONSABLE = Convert.ToInt32(CmbResponsable.SelectedValue),
+            };
+            new Controller_Agence().Modifier(agence);
+            BtnNouveau_Click(sender, e);
+        }
+
+        private void BtnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Voulez vous supprimer","Attention",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            {
+                new Controller_Agence().Suprimer(idAgence);
+                BtnNouveau_Click(sender, e);
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            index = dataGridView1.CurrentRow.Index;
+            idAgence = Convert.ToInt32(dataGridView1.Rows[index].Cells["IDAGENCE"].Value.ToString());
+            TxtNom_Agence.Text= dataGridView1.Rows[index].Cells["NOM"].Value.ToString();
+            TxtAdresse_Agence.Text= dataGridView1.Rows[index].Cells["ADRESSE"].Value.ToString();
+            TxtTelephone_Agence.Text= dataGridView1.Rows[index].Cells["TELE"].Value.ToString();
         }
     }
 }

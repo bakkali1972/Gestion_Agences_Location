@@ -53,23 +53,34 @@ namespace Gestion_Agences_Location.Views
               dataGridView1.DataSource = new Controller_Ville().getByName(TxtNom_Ville.Text);
         }
 
-        // TODO CORRIGER ERREUR  SUPPRIMER
+        
         private void BtnSupprimer_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Voulez vous supprimer Ville " + TxtNom_Ville.Text, "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            try
             {
-
-                if (new Controller_Ville().Suprimer(TxtNom_Ville.Text)==true)
+                if (MessageBox.Show("Voulez vous supprimer Ville " + TxtNom_Ville.Text, "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    BtnNouveau_Click(sender, e);
-                    MessageBox.Show("Ville " + TxtNom_Ville.Text + " a été supprimé ");
-                }
-                else
-                {
-                    MessageBox.Show("Ville " + TxtNom_Ville.Text + " introuvable ");
-                }
 
+                    if (new Controller_Ville().Suprimer(TxtNom_Ville.Text) == true)
+                    {
+                        BtnNouveau_Click(sender, e);
+                        MessageBox.Show("Ville " + TxtNom_Ville.Text + " a été supprimé ");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ville " + TxtNom_Ville.Text + " introuvable ");
+                    }
+
+                }
             }
+            catch (Exception ex )
+            {
+                MessageBox.Show("Impossible de supprimer cette ville");
+            }
+
+
+            
         }
         int index;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

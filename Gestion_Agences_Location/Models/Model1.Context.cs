@@ -25,6 +25,8 @@ namespace Gestion_Agences_Location.Models
             throw new UnintentionalCodeFirstException();
         }
     
+
+
         public virtual DbSet<Agence> Agences { get; set; }
         public virtual DbSet<CLIENT> CLIENTs { get; set; }
         public virtual DbSet<CONTRAT> CONTRATs { get; set; }

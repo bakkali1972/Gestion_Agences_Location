@@ -46,7 +46,6 @@
             this.BtnRechercher = new System.Windows.Forms.Button();
             this.btnAjoutter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.IDAGENCE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ADRESSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TELE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +62,6 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDAGENCE,
             this.nom,
             this.ADRESSE,
             this.TELE,
@@ -75,8 +73,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(574, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(781, 689);
+            this.dataGridView1.Size = new System.Drawing.Size(801, 689);
             this.dataGridView1.TabIndex = 52;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // TxtTelephone_Agence
             // 
@@ -212,6 +212,7 @@
             this.BtnSupprimer.TabIndex = 49;
             this.BtnSupprimer.Text = "Supprimer";
             this.BtnSupprimer.UseVisualStyleBackColor = true;
+            this.BtnSupprimer.Click += new System.EventHandler(this.BtnSupprimer_Click);
             // 
             // BtnModifier
             // 
@@ -225,6 +226,7 @@
             this.BtnModifier.TabIndex = 48;
             this.BtnModifier.Text = "Modifier";
             this.BtnModifier.UseVisualStyleBackColor = true;
+            this.BtnModifier.Click += new System.EventHandler(this.BtnModifier_Click);
             // 
             // BtnRechercher
             // 
@@ -238,6 +240,7 @@
             this.BtnRechercher.TabIndex = 47;
             this.BtnRechercher.Text = "Rechercher";
             this.BtnRechercher.UseVisualStyleBackColor = true;
+            this.BtnRechercher.Click += new System.EventHandler(this.BtnRechercher_Click);
             // 
             // btnAjoutter
             // 
@@ -265,13 +268,6 @@
             this.label2.Text = "AGENCE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // IDAGENCE
-            // 
-            this.IDAGENCE.DataPropertyName = "IDAGENCE";
-            this.IDAGENCE.HeaderText = "ID AGENCE";
-            this.IDAGENCE.Name = "IDAGENCE";
-            this.IDAGENCE.Visible = false;
-            // 
             // nom
             // 
             this.nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -291,21 +287,19 @@
             this.TELE.DataPropertyName = "TELE";
             this.TELE.HeaderText = "TELEPHONE";
             this.TELE.Name = "TELE";
-            this.TELE.Width = 200;
+            this.TELE.Width = 150;
             // 
             // IDVILLE
             // 
             this.IDVILLE.DataPropertyName = "IDVILLE";
             this.IDVILLE.HeaderText = "IDVILLE";
             this.IDVILLE.Name = "IDVILLE";
-            this.IDVILLE.Visible = false;
             // 
             // IDRESPONSABLE
             // 
             this.IDRESPONSABLE.DataPropertyName = "IDRESPONSABLE";
             this.IDRESPONSABLE.HeaderText = "IDRESPONSABLE";
             this.IDRESPONSABLE.Name = "IDRESPONSABLE";
-            this.IDRESPONSABLE.Visible = false;
             // 
             // RESPONSABLE
             // 
@@ -319,6 +313,7 @@
             this.VILLE.DataPropertyName = "Ville";
             this.VILLE.HeaderText = "VILLE";
             this.VILLE.Name = "VILLE";
+            this.VILLE.Visible = false;
             // 
             // CONTRATs
             // 
@@ -370,7 +365,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CmbVille;
         private System.Windows.Forms.ComboBox CmbResponsable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDAGENCE;
         private System.Windows.Forms.DataGridViewTextBoxColumn nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn ADRESSE;
         private System.Windows.Forms.DataGridViewTextBoxColumn TELE;
