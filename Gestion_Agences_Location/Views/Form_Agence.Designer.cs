@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idagence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ADRESSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TELE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDVILLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDRESPONSABLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contrats = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.responsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ville = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtTelephone_Agence = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CmbResponsable = new System.Windows.Forms.ComboBox();
@@ -46,15 +55,6 @@
             this.BtnRechercher = new System.Windows.Forms.Button();
             this.btnAjoutter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.idagence2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ADRESSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TELE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDVILLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDRESPONSABLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contrats = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.responsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ville = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -75,10 +75,73 @@
             this.dataGridView1.Location = new System.Drawing.Point(574, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(835, 689);
+            this.dataGridView1.Size = new System.Drawing.Size(935, 689);
             this.dataGridView1.TabIndex = 52;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // idagence2
+            // 
+            this.idagence2.DataPropertyName = "IDAGENCE";
+            this.idagence2.HeaderText = "IDAGENCE";
+            this.idagence2.Name = "idagence2";
+            this.idagence2.Visible = false;
+            // 
+            // nom
+            // 
+            this.nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nom.DataPropertyName = "NOM";
+            this.nom.HeaderText = "NOM";
+            this.nom.Name = "nom";
+            // 
+            // ADRESSE
+            // 
+            this.ADRESSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ADRESSE.DataPropertyName = "ADRESSE";
+            this.ADRESSE.HeaderText = "ADRESSE";
+            this.ADRESSE.Name = "ADRESSE";
+            // 
+            // TELE
+            // 
+            this.TELE.DataPropertyName = "TELE";
+            this.TELE.HeaderText = "TELEPHONE";
+            this.TELE.Name = "TELE";
+            this.TELE.Width = 150;
+            // 
+            // IDVILLE
+            // 
+            this.IDVILLE.DataPropertyName = "IDVILLE";
+            this.IDVILLE.HeaderText = "IDVILLE";
+            this.IDVILLE.Name = "IDVILLE";
+            this.IDVILLE.Visible = false;
+            // 
+            // IDRESPONSABLE
+            // 
+            this.IDRESPONSABLE.DataPropertyName = "IDRESPONSABLE";
+            this.IDRESPONSABLE.HeaderText = "IDRESPONSABLE";
+            this.IDRESPONSABLE.Name = "IDRESPONSABLE";
+            this.IDRESPONSABLE.Visible = false;
+            // 
+            // contrats
+            // 
+            this.contrats.DataPropertyName = "CONTRATs";
+            this.contrats.HeaderText = "contrats";
+            this.contrats.Name = "contrats";
+            this.contrats.Visible = false;
+            // 
+            // responsable
+            // 
+            this.responsable.DataPropertyName = "Responsable";
+            this.responsable.HeaderText = "responsable";
+            this.responsable.Name = "responsable";
+            this.responsable.Visible = false;
+            // 
+            // ville
+            // 
+            this.ville.DataPropertyName = "Ville";
+            this.ville.HeaderText = "ville";
+            this.ville.Name = "ville";
+            this.ville.Visible = false;
             // 
             // TxtTelephone_Agence
             // 
@@ -270,75 +333,12 @@
             this.label2.Text = "AGENCE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // idagence2
-            // 
-            this.idagence2.DataPropertyName = "IDAGENCE";
-            this.idagence2.HeaderText = "IDAGENCE";
-            this.idagence2.Name = "idagence2";
-            this.idagence2.Visible = false;
-            // 
-            // nom
-            // 
-            this.nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nom.DataPropertyName = "NOM";
-            this.nom.HeaderText = "NOM";
-            this.nom.Name = "nom";
-            // 
-            // ADRESSE
-            // 
-            this.ADRESSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ADRESSE.DataPropertyName = "ADRESSE";
-            this.ADRESSE.HeaderText = "ADRESSE";
-            this.ADRESSE.Name = "ADRESSE";
-            // 
-            // TELE
-            // 
-            this.TELE.DataPropertyName = "TELE";
-            this.TELE.HeaderText = "TELEPHONE";
-            this.TELE.Name = "TELE";
-            this.TELE.Width = 150;
-            // 
-            // IDVILLE
-            // 
-            this.IDVILLE.DataPropertyName = "IDVILLE";
-            this.IDVILLE.HeaderText = "IDVILLE";
-            this.IDVILLE.Name = "IDVILLE";
-            this.IDVILLE.Visible = false;
-            // 
-            // IDRESPONSABLE
-            // 
-            this.IDRESPONSABLE.DataPropertyName = "IDRESPONSABLE";
-            this.IDRESPONSABLE.HeaderText = "IDRESPONSABLE";
-            this.IDRESPONSABLE.Name = "IDRESPONSABLE";
-            this.IDRESPONSABLE.Visible = false;
-            // 
-            // contrats
-            // 
-            this.contrats.DataPropertyName = "CONTRATs";
-            this.contrats.HeaderText = "contrats";
-            this.contrats.Name = "contrats";
-            this.contrats.Visible = false;
-            // 
-            // responsable
-            // 
-            this.responsable.DataPropertyName = "Responsable";
-            this.responsable.HeaderText = "responsable";
-            this.responsable.Name = "responsable";
-            this.responsable.Visible = false;
-            // 
-            // ville
-            // 
-            this.ville.DataPropertyName = "Ville";
-            this.ville.HeaderText = "ville";
-            this.ville.Name = "ville";
-            this.ville.Visible = false;
-            // 
             // Form_Agence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(1421, 713);
+            this.ClientSize = new System.Drawing.Size(1521, 713);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnNouveau);

@@ -115,7 +115,7 @@ namespace Gestion_Agences_Location.Views
             CmbVille.Text = ville2.NOM;
 
 
-            //Remplissage Responsable
+            //Remplissage Responsable Name
             id = Convert.ToInt32(dataGridView1.Rows[index].Cells["idresponsable"].Value.ToString());
             responsable2 = new Controller_Responsable().getByIdResponsable(id);
             CmbResponsable.Text = responsable2.NOM_PRENOM;
