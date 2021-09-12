@@ -18,6 +18,7 @@ namespace Gestion_Agences_Location.Models
         public Gestion_Agence_LocationEntities()
             : base("name=Gestion_Agence_LocationEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

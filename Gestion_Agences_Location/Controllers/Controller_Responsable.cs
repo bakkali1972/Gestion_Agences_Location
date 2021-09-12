@@ -31,17 +31,17 @@ namespace Gestion_Agences_Location.Controllers
             return listeResponsable;
         }
 
-        public List<Responsable> getByIdResponsable(int idResponsable)
+        public Responsable getByIdResponsable(int idResponsable)
         {
+            Responsable responsable;
             using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
             {
-                listeResponsable = _context.Responsables.Where(e => e.IDRESPONSABLE == idResponsable).ToList();
+                responsable = _context.Responsables.FirstOrDefault(e => e.IDRESPONSABLE == idResponsable);
             }
-            return listeResponsable;
+            return responsable;
         }
 
-
-
+ 
 
 
         public bool Modifier(Responsable responsable)

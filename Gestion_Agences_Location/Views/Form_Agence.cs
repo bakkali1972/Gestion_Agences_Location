@@ -18,11 +18,13 @@ namespace Gestion_Agences_Location.Views
         {
             InitializeComponent();
         }
-        int idAgence, index;
+        int idAgence, index, id;
+        Ville ville2;
+        Responsable responsable2;
        
         private void Agence_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = new Controller_Agence().getAll();
+           
 
 
             CmbVille.DataSource = new Controller_Ville().getAll();
@@ -32,6 +34,10 @@ namespace Gestion_Agences_Location.Views
             CmbResponsable.DataSource = new Controller_Responsable().getAll();
             CmbResponsable.DisplayMember = "NOM_PRENOM";
             CmbResponsable.ValueMember = "IDRESPONSABLE";
+
+            BtnNouveau_Click(sender, e);
+
+
         }
 
        
@@ -98,10 +104,24 @@ namespace Gestion_Agences_Location.Views
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             index = dataGridView1.CurrentRow.Index;
-            idAgence = Convert.ToInt32(dataGridView1.Rows[index].Cells["IDAGENCE"].Value.ToString());
+            idAgence = Convert.ToInt32(dataGridView1.Rows[index].Cells["IDAGENCE2"].Value.ToString());
             TxtNom_Agence.Text= dataGridView1.Rows[index].Cells["NOM"].Value.ToString();
             TxtAdresse_Agence.Text= dataGridView1.Rows[index].Cells["ADRESSE"].Value.ToString();
             TxtTelephone_Agence.Text= dataGridView1.Rows[index].Cells["TELE"].Value.ToString();
+
+            // Remplisssage ville name
+            id =Convert.ToInt32(dataGridView1.Rows[index].Cells["idville"].Value.ToString());
+            ville2 = new Controller_Ville().getById(id);
+            CmbVille.Text = ville2.NOM;
+
+
+            //Remplissage Responsable
+            id = Convert.ToInt32(dataGridView1.Rows[index].Cells["idresponsable"].Value.ToString());
+            responsable2 = new Controller_Responsable().getByIdResponsable(id);
+            CmbResponsable.Text = responsable2.NOM_PRENOM;
+
+
+
         }
     }
 }
