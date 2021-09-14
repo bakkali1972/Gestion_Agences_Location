@@ -19,9 +19,8 @@ namespace Gestion_Agences_Location.Views
             InitializeComponent();
         }
         int idAgence, index, id;
-        Ville ville2;
-        Responsable responsable2;
-       
+        Agence ag;
+
         private void Agence_Load(object sender, EventArgs e)
         {
            
@@ -58,7 +57,7 @@ namespace Gestion_Agences_Location.Views
 
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = new Controller_Agence().getAll();
+            
             TxtNom_Agence.Clear();
             TxtAdresse_Agence.Clear();
             TxtTelephone_Agence.Clear();
@@ -68,9 +67,11 @@ namespace Gestion_Agences_Location.Views
             dataGridView1.DataSource = new Controller_Agence().getAll();
         }
 
+       
         private void BtnRechercher_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = new Controller_Agence().getByName(TxtNom_Agence.Text);
+            ag = new Controller_Agence().getByName(TxtNom_Agence.Text);
+            remplirtextBoxCombo();
         }
 
         private void BtnModifier_Click(object sender, EventArgs e)
@@ -105,23 +106,18 @@ namespace Gestion_Agences_Location.Views
         {
             index = dataGridView1.CurrentRow.Index;
             idAgence = Convert.ToInt32(dataGridView1.Rows[index].Cells["IDAGENCE2"].Value.ToString());
-            TxtNom_Agence.Text= dataGridView1.Rows[index].Cells["NOM"].Value.ToString();
-            TxtAdresse_Agence.Text= dataGridView1.Rows[index].Cells["ADRESSE"].Value.ToString();
-            TxtTelephone_Agence.Text= dataGridView1.Rows[index].Cells["TELE"].Value.ToString();
-
-            // Remplisssage ville name
-            id =Convert.ToInt32(dataGridView1.Rows[index].Cells["idville"].Value.ToString());
-            ville2 = new Controller_Ville().getById(id);
-            CmbVille.Text = ville2.NOM;
+            ag = new Controller_Agence().getById(idAgence);
+            remplirtextBoxCombo();
+        }
 
 
-            //Remplissage Responsable Name
-            id = Convert.ToInt32(dataGridView1.Rows[index].Cells["idresponsable"].Value.ToString());
-            responsable2 = new Controller_Responsable().getByIdResponsable(id);
-            CmbResponsable.Text = responsable2.NOM_PRENOM;
-
-
-
+        public void remplirtextBoxCombo()
+        {
+            TxtNom_Agence.Text= ag.NOM;
+            TxtAdresse_Agence.Text= ag.ADRESSE;
+            TxtTelephone_Agence.Text= ag.TELE;
+            CmbVille.Text = ag.Ville.NOM;
+            CmbResponsable.Text = ag.Responsable.NOM_PRENOM;
         }
     }
 }
