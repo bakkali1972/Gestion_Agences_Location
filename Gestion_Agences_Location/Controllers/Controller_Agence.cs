@@ -17,20 +17,41 @@ namespace Gestion_Agences_Location.Controllers
         {
             using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
             {
-                //_context.Configuration.LazyLoadingEnabled = false;
                 lisetAgences = _context.Agences.ToList();
             }
             return lisetAgences;
         }
 
-        public List<Agence> getByName( string nom)
+        public Agence getByName( string nom)
         {
+            Agence a;
             using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
             {
-                lisetAgences = _context.Agences.Where(e => e.NOM.Contains(nom)).ToList();
+                // EntityFrameWork core pour EF6 Include("Ville.Responsable")
+                a = _context.Agences
+                    .Include("Ville")
+                    .Include("Responsable")
+                    .Where(e => e.NOM.Contains(nom))
+                    .FirstOrDefault();
             }
-            return lisetAgences;
+            return a;
         }
+
+        public Agence getById(Int32 id)
+        {
+            Agence a;
+            using (Gestion_Agence_LocationEntities _context = new Gestion_Agence_LocationEntities())
+            {
+                // EntityFrameWork core pour EF6 Include("Ville.Responsable")
+                a = _context.Agences
+                    .Include("Ville")
+                    .Include("Responsable")
+                    .Where(e => e.IDAGENCE==id)
+                    .FirstOrDefault();
+            }
+            return a;
+        }
+
 
         public List<Agence> getByVille(string ville)
         {
@@ -55,6 +76,8 @@ namespace Gestion_Agences_Location.Controllers
                     _agence.NOM = agence.NOM;
                     _agence.ADRESSE = agence.ADRESSE;
                     _agence.TELE = agence.TELE;
+                    _agence.IDRESPONSABLE = agence.IDRESPONSABLE;
+                    _agence.IDVILLE = agence.IDVILLE;
                     _context.SaveChanges();
                 }
             }
